@@ -7,6 +7,15 @@ class ProductController{
         return res.json(products)
     }
 
+    async show(req,res){
+        const { product_id } = req.params
+        const product=await Product.findById({_id:product_id})
+        if(!product){
+            return res.status(401).json({error:"Product not found..."})
+        }
+        return res.json(product)
+    }
+
     async store(req,res){
         const Schema=yup.object().shape({
             title:yup.string().required(),
