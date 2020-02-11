@@ -63,7 +63,7 @@ class ProductController{
             return res.status(401).json({error:"Product not found..."})
         }
 
-        await product.delete()
+        await product.deleteOne({_id:product._id})
         return res.json({message:"Product exclused successful..."})
     }
 }
