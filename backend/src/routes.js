@@ -1,9 +1,9 @@
 const express = require('express')
 
+const ProductController = require('./app/controllers/ProductController')
+
 const routes = express.Router()
 
-routes.get('/', (req,res)=>{
-    return res.json({ok:true})
-})
+routes.post('/products', ProductController.store)
 
 module.exports=routes
