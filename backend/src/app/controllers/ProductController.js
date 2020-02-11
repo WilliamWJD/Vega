@@ -54,6 +54,18 @@ class ProductController{
 
         return res.json(product)
     }
+
+    async delete(req,res){
+        const { product_id } = req.params
+        
+        const product=await Product.findById({_id:product_id})
+        if(!product){
+            return res.status(401).json({error:"Product not found..."})
+        }
+
+        await product.delete()
+        return res.json({message:"Product exclused successful..."})
+    }
 }
 
 module.exports=new ProductController()
