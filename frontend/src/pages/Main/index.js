@@ -6,14 +6,34 @@ import api from '../../services/api'
 
 const Main = () => {
     const [products, setProducts] = useState([])
+    const [productInfo, setProductInfo]=useState({})
+    const [page, setPage]=useState(1)
 
     useEffect(() => {
         async function loadProducts() {
-            const response = await api.get('/products')
-            setProducts(response.data.docs)
+            const response = await api.get(`/products?page=${page}`)
+
+            const {docs, ...productInfo}=response.data
+
+            setProducts(docs)
+            setProductInfo(productInfo)
         }
         loadProducts()
-    }, [])
+    }, [page])
+
+    function nextPage(){
+        if(page === productInfo.pages){
+            return
+        }
+        setPage(page+1)
+    }
+
+    function prevPage(){
+        if(page === 1){
+            return
+        }
+        setPage(page-1)
+    }
 
     return (
         <div className="product-list">
@@ -25,8 +45,8 @@ const Main = () => {
                 </article>
             ))}
             <div className="actions">
-                <button>Anterior</button>
-                <button>Próxima</button>
+                <button onClick={prevPage}>Anterior</button>
+                <button onClick={nextPage}>Próxima</button>
             </div>
         </div>
     )
