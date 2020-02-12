@@ -1,19 +1,11 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello Vega</Text>
-    </View>
-  );
+import Routes from './src/routes'
+
+const App = () => {
+    return (
+        <Routes/>
+    )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
