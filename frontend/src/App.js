@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Vega - Cadastro de produtos</h1>
-    </div>
-  );
+import './styles.css';
+
+import Header from './components/Header'
+
+const App = () => {
+  return(
+    <Header/>
+  )
 }
 
 export default App;
