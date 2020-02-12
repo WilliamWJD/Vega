@@ -8,10 +8,10 @@ import Header from './components/Header'
 // import Main from './pages/Main'
 
 const App = () => {
-  return(
+  return (
     <>
-      <Header/>
-      <Routes/>
+      <Header />
+      <Routes />
     </>
   )
 }

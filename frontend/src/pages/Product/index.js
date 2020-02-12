@@ -1,8 +1,29 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-const Product = () => {
+import './styles.css'
+
+import api from '../../services/api'
+
+const Product = ({match}) => {
+    const [product, setProduct]=useState({})
+    const {id}=match.params
+
+    useEffect(()=>{
+        async function loadProduct(){
+            const response=await api.get(`/products/${id}`)
+            setProduct(response.data)
+        }
+        loadProduct()
+    },[])
+
     return(
-        <h1>Product</h1>
+        <div className="product-info">
+            <h1>{product.title}</h1>
+            <p>{product.description}</p>
+            <p>
+                URL: <a href={product.url} target="_blank">{product.url}</a>
+            </p>
+        </div>
     )
 }
 
