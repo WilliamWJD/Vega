@@ -45,8 +45,8 @@ const Main = () => {
                 </article>
             ))}
             <div className="actions">
-                <button onClick={prevPage}>Anterior</button>
-                <button onClick={nextPage}>Próxima</button>
+                <button disabled={page===1} onClick={prevPage}>Anterior</button>
+                <button disabled={page===productInfo.pages} onClick={nextPage}>Próxima</button>
             </div>
         </div>
     )
