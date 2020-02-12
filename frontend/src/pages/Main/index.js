@@ -24,6 +24,10 @@ const Main = () => {
                     <a href="">Acessar</a>
                 </article>
             ))}
+            <div className="actions">
+                <button>Anterior</button>
+                <button>Próxima</button>
+            </div>
         </div>
     )
 }
